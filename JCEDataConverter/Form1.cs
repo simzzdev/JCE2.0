@@ -8,6 +8,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web.Script.Serialization;
 using System.Windows.Forms;
 using System.Xml;
 
@@ -29,6 +30,15 @@ namespace JCEDataConverter
             openDialog.ShowDialog();
         }
 
+        //private string cleanText(string str)
+        //{
+        //    //char back = '\\';
+        //    //string backS = back.ToString();
+        //    //string doubleB = backS + backS;
+        //    //return str.Replace('"', '\'').Replace(doubleB, backS);
+        //    return str.Replace("\\", "");
+        //}
+
         private void F_FileOk(object sender, CancelEventArgs e)
         {
             inputFileStatusLabel.Text = openDialog.FileName;
@@ -39,7 +49,7 @@ namespace JCEDataConverter
                 string stringXML = s.ReadToEnd();
                 x.LoadXml(stringXML);
                 XmlNodeList rows = x.GetElementsByTagName("Row");
-                for (int i = 0; i < rows.Count; i++)
+                for (int i = 1; i < rows.Count; i++)
                 {
                     if (rows.Count >= 2)
                     {
@@ -47,7 +57,7 @@ namespace JCEDataConverter
                         string currTitle = rows[i].ChildNodes[1].InnerText;
                         document d = new document();
                         d.id = currId;
-                        d.title = currTitle;
+                        d.title = currTitle.Replace('"', '\'');
                         importedDocs.Add(d);
                     }
                     else
@@ -97,8 +107,11 @@ namespace JCEDataConverter
                 docList.notes = listNotesTextBox.Text;
                 docList.type = productionRadioButton.Checked ? "prod" : "test";
                 docList.documents = docs.ToArray();
-                string txt = JsonConvert.SerializeObject(docList);
-                return txt;
+                //string txt = JsonConvert.SerializeObject(docList);
+                JavaScriptSerializer s = new JavaScriptSerializer();
+                string txt = s.Serialize(docList);
+                //JsonConvert.SerializeObject(docList, new JsonSerializerSettings() { StringEscapeHandling = StringEscapeHandling.Default });
+                return txt.Replace("\\", "");
             }
             else
             {
@@ -117,12 +130,16 @@ namespace JCEDataConverter
             }
             else
                 d.Filter = "JSON File|*.json";
-            d.FileOk += (object sender, CancelEventArgs e) =>
+            d.FileOk += async (object sender, CancelEventArgs e) =>
                 {
+                    statusLabel.Text = "Please wait...";
                     using (Stream fs = d.OpenFile())
                     {
                         StreamWriter sw = new StreamWriter(fs);
-                        sw.Write(fileContents);
+                        await sw.WriteAsync(fileContents);
+                        await sw.FlushAsync();
+                        statusLabel.Text = "File saved.";
+                        //sw.Write(fileContents);
                     }
                 };
             d.ShowDialog();
