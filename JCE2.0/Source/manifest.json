@@ -2,7 +2,7 @@
   // Required
   "manifest_version": 2,
   "name": "John's Chrome Extension 2.0 - Beta 0.1",
-  "version": "02000.1",
+  "version": "200.01",
   "description": "First beta - for now, search works OK",
   "browser_action": {
     "default_popup": "popup.html"
