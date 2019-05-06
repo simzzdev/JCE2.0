@@ -1,16 +1,25 @@
 ﻿<!DOCTYPE html>
 
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
-<head>
-    <meta charset="utf-8" />
-    <title>JCE Testing Page</title>
-    <script src="loadData.js"></script>
-    <script src="test.js"></script>
-    <style>
-        span.doc_item
-        {
-            font-size:18px; display:block; padding:1px;
-        }
+    <head>
+        <meta charset="utf-8" />
+        <title>JCE Testing Page</title>
+        <script src="loadData.js"></script>
+        <script src="test.js"></script>
+        <style>
+            span.doc_item {
+                font-size: 18px;
+                display: block;
+                padding: 2px;
+            }
+            span.doc_item_selected {
+                background-color:aqua;
+                border: 1px solid black;
+            }
+            span.doc_subitem {
+                font-size: 1px;
+                font-weight: bold;
+            }
             span.doc_item:hover {
                 background-color: aliceblue;
                 color: royalblue;
@@ -19,12 +28,12 @@
                 display: block;
                 margin-bottom: 2px;
             }
-    </style>
-</head>
+        </style>
+    </head>
 
-<body>
-    Test
-    <input type="text" id="input1" oninput="input1_input()" value="test" />
-    <p id="p1">Results will appear here.</p>
-</body>
+    <body onload="page_load()" onkeydown="page_keyDown(event)">
+        Test
+        <input type="text" id="input1" oninput="input1_input()" value="" />
+        <p id="p1">Results will appear here.</p>
+    </body>
 </html>

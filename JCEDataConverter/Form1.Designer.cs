@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.inputFileBtn = new System.Windows.Forms.Button();
@@ -114,6 +115,7 @@
             // 
             // codeWizardBtn
             // 
+            this.codeWizardBtn.Enabled = false;
             this.codeWizardBtn.Location = new System.Drawing.Point(220, 194);
             this.codeWizardBtn.Name = "codeWizardBtn";
             this.codeWizardBtn.Size = new System.Drawing.Size(110, 23);
@@ -169,10 +171,12 @@
             // 
             // codeToRemoveTextBox
             // 
+            this.codeToRemoveTextBox.Enabled = false;
             this.codeToRemoveTextBox.Location = new System.Drawing.Point(17, 194);
             this.codeToRemoveTextBox.Name = "codeToRemoveTextBox";
             this.codeToRemoveTextBox.Size = new System.Drawing.Size(197, 22);
             this.codeToRemoveTextBox.TabIndex = 13;
+            this.codeToRemoveTextBox.Text = resources.GetString("codeToRemoveTextBox.Text");
             // 
             // productionRadioButton
             // 
@@ -232,16 +236,16 @@
             this.statusStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.statusLabel});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 545);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 547);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(434, 24);
+            this.statusStrip1.Size = new System.Drawing.Size(434, 22);
             this.statusStrip1.TabIndex = 19;
             this.statusStrip1.Text = "statusStrip1";
             // 
             // statusLabel
             // 
             this.statusLabel.Name = "statusLabel";
-            this.statusLabel.Size = new System.Drawing.Size(0, 19);
+            this.statusLabel.Size = new System.Drawing.Size(0, 17);
             // 
             // Form1
             // 

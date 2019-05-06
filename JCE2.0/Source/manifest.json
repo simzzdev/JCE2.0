@@ -1,13 +1,25 @@
 {
-	// Required
-	"manifest_version": 2,
-	"name": "John's Chrome Extension 2.0",
-	"version": "2099.0",
-
-	// Recommended
-	"default_locale": "en",
-	"description": "A plain text description",
-
-	// Pick one (or none)
-	"browser_action": { popup.html }
+  // Required
+  "manifest_version": 2,
+  "name": "John's Chrome Extension 2.0 - Beta 0.1",
+  "version": "02000.1",
+  "description": "First beta - for now, search works OK",
+  "browser_action": {
+    "default_popup": "popup.html"
+  },
+  "content_scripts": [
+    {
+      "matches": [ "http://xactware.custhelp.com/*" ],
+      "js": [ "content.js" ]
+    }
+  ],
+  "commands": {
+    "_execute_browser_action": {
+      "suggested_key": {
+        "default": "Ctrl+Home",
+        "mac": "MacCtrl+Home"
+      },
+      "description": "Opens Browser Action Popup"
+    }
+  }
 }

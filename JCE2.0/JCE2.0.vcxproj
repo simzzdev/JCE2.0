@@ -115,6 +115,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <None Include="Source\content.js" />
     <None Include="Source\docs.json" />
     <None Include="Source\JCE2.0.sln" />
     <None Include="Source\loadData.js" />
@@ -123,6 +124,10 @@
     <None Include="Source\popup.js" />
     <None Include="Source\test.html" />
     <None Include="Source\test.js" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="Resources\Popularity\1.png" />
+    <Image Include="Resources\Popularity\5.png" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

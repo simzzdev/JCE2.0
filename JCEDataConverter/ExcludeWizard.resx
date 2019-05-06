@@ -117,10 +117,4 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="codeToRemoveTextBox.Text" xml:space="preserve">
-    <value>4833,4832,4831,4830,4829,4828,4802,4801,4690,4688,4685,4683,4673,4645,4640,4593,4591,4590,4589,4582,4577,4567,4563,4557,4217,4215,3671,3670,3657,3651,3544,3543,3516,3515,3509,3500,3479,3475,3371,3357,3351,3321,3308,3298,3297,3281,3266,3265,3254,3245,3236,3229,3228,3227,3218,3208,3202,3198,3188,3153,3152</value>
-  </data>
-  <metadata name="statusStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 17</value>
-  </metadata>
 </root>

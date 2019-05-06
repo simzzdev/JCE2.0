@@ -30,15 +30,6 @@ namespace JCEDataConverter
             openDialog.ShowDialog();
         }
 
-        //private string cleanText(string str)
-        //{
-        //    //char back = '\\';
-        //    //string backS = back.ToString();
-        //    //string doubleB = backS + backS;
-        //    //return str.Replace('"', '\'').Replace(doubleB, backS);
-        //    return str.Replace("\\", "");
-        //}
-
         private void F_FileOk(object sender, CancelEventArgs e)
         {
             inputFileStatusLabel.Text = openDialog.FileName;
@@ -55,9 +46,14 @@ namespace JCEDataConverter
                     {
                         string currId = rows[i].ChildNodes[0].InnerText;
                         string currTitle = rows[i].ChildNodes[1].InnerText;
+                        //2 is language
+                        //string dateCreated = rows[i].ChildNodes[3].InnerText;
+                        string dateModified = rows[i].ChildNodes[4].InnerText;
                         document d = new document();
                         d.id = currId;
                         d.title = currTitle.Replace('"', '\'');
+                        //d.dateCreated = dateCreated;
+                        d.dateModified = dateModified;
                         importedDocs.Add(d);
                     }
                     else
@@ -69,8 +65,15 @@ namespace JCEDataConverter
         }
 
         private void codeWizardBtn_Click(object sender, EventArgs e)
+        { 
+            ExcludeWizard exc = new ExcludeWizard(importedDocs, codeToRemoveTextBox.Text);
+            exc.dataReturned += Exc_dataReturned;
+            exc.Show();
+        }
+
+        private void Exc_dataReturned(object sender, EventArgs e)
         {
-            //Not yet implemented
+            codeToRemoveTextBox.Text = sender.ToString();
         }
 
         private List<document> RemoveDocuments(string[] docs)
@@ -103,6 +106,7 @@ namespace JCEDataConverter
             {
                 //Prepare docList file
                 documentationList docList = new documentationList();
+                docList.name = listNameTextBox.Text;
                 docList.dateGenerated = DateTime.Now.ToShortDateString();
                 docList.notes = listNotesTextBox.Text;
                 docList.type = productionRadioButton.Checked ? "prod" : "test";
@@ -111,7 +115,7 @@ namespace JCEDataConverter
                 JavaScriptSerializer s = new JavaScriptSerializer();
                 string txt = s.Serialize(docList);
                 //JsonConvert.SerializeObject(docList, new JsonSerializerSettings() { StringEscapeHandling = StringEscapeHandling.Default });
-                return txt.Replace("\\", "");
+                return txt.Replace("\\", "").Replace("u0027", "'");
             }
             else
             {

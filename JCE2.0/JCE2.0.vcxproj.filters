@@ -39,5 +39,16 @@
     <None Include="Source\manifest.json">
       <Filter>Source Files</Filter>
     </None>
+    <None Include="Source\content.js">
+      <Filter>Source Files</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="Resources\Popularity\1.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\Popularity\5.png">
+      <Filter>Resource Files</Filter>
+    </Image>
   </ItemGroup>
 </Project>

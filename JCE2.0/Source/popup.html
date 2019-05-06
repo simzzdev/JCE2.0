@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <style>
+        span.doc_item {
+            font-size: 18px;
+            display: block;
+            padding: 6px;
+        }
+        span.doc_item_selected {
+            background-color: mediumturquoise;
+            color:white;
+        }
+        span.doc_subitem {
+            font-size: 14px;
+        }
+        span.doc_item:hover {
+            background-color: aliceblue;
+            text-decoration: underline;
+            cursor: pointer;
+            border: 1px dashed darkturquoise;
+            padding: 5px;
+            color: darkturquoise;
+        }
+    </style>
+</head>
+
+<body  style="min-width:600px;">
+    JCE 2.0 - Search the eService Center<br />
+    <input type="text" id="input1" style="width:75%" value="" />
+    <p id="p1"></p>
+    <script src="loadData.js"></script>
+    <script src="popup.js"></script>
+</body>
+</html>
