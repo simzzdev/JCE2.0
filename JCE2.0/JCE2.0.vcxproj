@@ -122,6 +122,10 @@
     <None Include="Source\manifest.json" />
     <None Include="Source\popup.html" />
     <None Include="Source\popup.js" />
+    <None Include="Source\tab_jira.js" />
+    <None Include="Source\tab_kb.html" />
+    <None Include="Source\tab_kb.js" />
+    <None Include="Source\tab_xa.js" />
     <None Include="Source\test.html" />
     <None Include="Source\test.js" />
   </ItemGroup>

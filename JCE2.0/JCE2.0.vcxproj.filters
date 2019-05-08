@@ -42,6 +42,18 @@
     <None Include="Source\content.js">
       <Filter>Source Files</Filter>
     </None>
+    <None Include="Source\tab_jira.js">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="Source\tab_kb.js">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="Source\tab_xa.js">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="Source\tab_kb.html">
+      <Filter>Source Files</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Image Include="Resources\Popularity\1.png">

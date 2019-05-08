@@ -3,34 +3,135 @@
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <style>
+        /*<!-- Tabbed Content -->*/
+        div.tabcontent-inactive {
+            display: none;
+        }
+
+        div.tabcontent-active {
+            display: block;
+        }
+
+        a.tabLink-active {
+            background-color: #19242f;
+            font-weight: bold;
+            color: #ffb900;
+            font-size: 20px;
+            margin-right: 8px;
+        }
+
+        a.tabLink-inactive {
+            background-color: #425d79;
+            text-decoration: none;
+            color: white;
+            font-size: 20px;
+            margin-right: 8px;
+        }
+        /*<!-- Selected Items -->*/
         span.doc_item {
             font-size: 18px;
             display: block;
             padding: 6px;
         }
+
         span.doc_item_selected {
             background-color: mediumturquoise;
-            color:white;
+            color: white;
         }
+
         span.doc_subitem {
             font-size: 14px;
         }
+
         span.doc_item:hover {
             background-color: aliceblue;
             text-decoration: underline;
             cursor: pointer;
             border: 1px dashed darkturquoise;
             padding: 5px;
-            color: darkturquoise;
+            color: black;
         }
     </style>
+    <a id="kbTabLink" class="tabLink-active" href="#">&nbsp;Answer Docs&nbsp;</a>
+    <a id="xaTabLink" class="tabLink-inactive" href="#">&nbsp;XactAnalysis SP&nbsp;</a>
+    <a id="jiraTabLink" class="tabLink-inactive" href="#">&nbsp;Jira&nbsp;</a>
+
+    <h3>John's Chrome Extension - 2.0 Beta 0.1</h3>
 </head>
 
-<body  style="min-width:600px;">
-    JCE 2.0 - Search the eService Center<br />
-    <input type="text" id="input1" style="width:75%" value="" />
-    <p id="p1"></p>
+<body style="min-width:600px; background-color:lightgray">
+    <div id="kbTab" class="tabcontent-active">
+        <h2>eService Center Search</h2>
+        <input type="text" id="input1" style="width:90%" value="" />
+        <p id="p1"></p>
+    </div>
+    <div id="xaTab" class="tabcontent-inactive">
+        <div>
+            <div style="float:left; display:block; width:50%; height:312px;" id="XASP_CF">
+                <h2>Company Filter Search</h2>
+                <div style="font-size:14px;"><input type="radio" id="xaCompanyRadio" name="cf" checked /><label for="xaCompanyRadio">Company</label><input type="radio" id="xaAdjusterRadio" name="cf" style="margin-left:16px;" /><label for="xaAdjusterRadio">Adjuster/XNA</label></div><br>
+                <input id="xaCfTxt_fcoid" class="wide" type="text" placeholder="Account Code" />
+                <input id="xaCfTxt_company_name" class="wide" type="text" placeholder="Company Name" />
+                <input id="xaCfTxt_city" class="halfwide" type="text" placeholder="City" />
+                <input id="xaCfTxt_state" class="halfwide" type="text" placeholder="State (i.e. UT)" />
+                <input id="xaCfTxt_key_code" class="wide" type="text" placeholder="Key Code" />
+                <input id="xaCfTxt_xn_address" class="wide" type="text" placeholder="XactNet Address" />
+                <input id="xaCfTxt_mfn" class="wide" type="text" placeholder="MFN" />
+                <input id="xaCfTxt_user_id" class="wide" type="text" placeholder="User ID (XID)" />
+                <br><br>
+                <button class="wide" id="xaCfSearchBtn">Search</button>
+                <br><br>
+            </div>
+            <div id="XASP_DL" style="float:right; display:block; width:46%; height:312px;">
+                <h2>Direct Links</h2><br>
+                <input id="xaDirectTxt_fcoid" class="wide" type="text" placeholder="Account Code" /><br><br>
+                <div>
+                    <button id="xaDeepLink_companyPgBtn" data-index="0" class="iconButton">Company Start Page</button>
+                    <button id="xaDeepLink_laBtn" data-index="1" class="iconButton">License <br>Admin</button>
+                    <button id="xaDeepLink_kclistBtn" data-index="2" class="iconButton">Key Code<br> List</button>
+                    <button id="xaDeepLink_clogBtn" data-index="3" class="iconButton">Connection<br> Log</button>
+                    <button id="xaDeepLink_xnalistBtn" data-index="4" class="iconButton">XactNet Address List</button>
+                    <button id="xaDeepLink_invBtn" data-index="5" class="iconButton">Inventory<br> List</button>
+                </div>
+            </div>
+        </div>
+        <div>
+            <span style="font-size:10pt; font-weight:bold;">&nbsp;Assignment Detail&nbsp;</span>
+            <input id="mfnTxt" type="text" style="width:110px;" placeholder="Enter MFN here" />
+            <input id="mfnXASPRadio" type="radio" name="mfn" checked /><label for="mfnXASPRadio">XASP</label>
+            <input id="mfnXARadio" type="radio" name="mfn" /><label for="mfnXARadio">XA</label>&nbsp;&nbsp;
+            <button id="mfnGoBtn">Go</button>&nbsp;<button id="mfnCopyBtn">Copy Link</button>
+        </div>
+    </div>
+    <div id="jiraTab" class="tabcontent-inactive">
+        <h1>Jira Quick Search</h1>
+        <div>
+            <div>
+                <button id="quickJiraCodePMBtn" class="quickJiraBtnClass">PM-</button><button id="quickJiraCodeXMWBtn" class="quickJiraBtnClass">XMW-</button>
+                <select id="quickJiraCodeSelect">
+                    <option>Other</option>
+                    <option>XactAnalysis (XA)</option>
+                    <option>Xactimate Online (XWEQXD)</option>
+                    <option>ClaimXperience (XWCX)</option>
+                    <option>ContentsTrack (XCPO)</option>
+                    <option>XactPRM (XACTPRM)</option>
+                    <option>Xactware ID (XWEID)</option>
+                    <option>Online Store (XWEOS)</option>
+                    <option>Support Services (XWESSD)</option>
+                    <option>OTC (XWEOTC)</option>
+                </select>
+            </div>
+            <br>
+            <input type="text" placeholder="Enter your PM or Jira ticket number here" id="jiraTxt" style="float: left; width:300px" />
+            <button id="jiraSearchBtn" style="border:none; background: none; margin-left:6px;"><img src="images/search-white.png" width="20px" /></button>
+            <p style="color:red; text-decoration:italic; display:none" id="jiraTxtInputError_p"><b>Invalid Format:</b> Please enter your PM or Jira code in the correct format, as shown:<br> PM-1234 or XMW-1234</p>
+        </div>
+    </div>
+
     <script src="loadData.js"></script>
+    <script src="popup.js"></script>
+    <script src="tab_kb.js"></script>
+    <script src="tab_xa.js"></script>
     <script src="popup.js"></script>
 </body>
 </html>
