@@ -1,24 +1,19 @@
-﻿var currentDocs;
-var currentSelectedIndex = -1;
-const kbSearchRegex = /[0-9]{2,4}$/gm;
+﻿var internalMode = true;
 
-var internalMode = true;
+//Constants
+const kbSearchRegex = /[0-9]{2,4}$/gm;
+const RESULTS_LIMIT = 7;
 const searchURL = internalMode ? "https://xactware3.custhelp.com/app/answers/list/kw/"
     : "http://xactware.custhelp.com/app/answers/list/kw/";
 const docURL = internalMode ? "http://xactware3.custhelp.com/app/answers/detail/a_id/"
     : "https://xactware.custhelp.com/app/answers/detail/a_id/";
 
-const RESULTS_LIMIT = 7;
+//Global vars
+var currentDocs;
+var currentSelectedIndex = -1;
 
-var searchBox = document.getElementById("input1");
 searchBox.addEventListener("input", input1_input);
-
-document.addEventListener("DOMContentLoaded", page_load);
 document.addEventListener("keydown", page_keyDown);
-
-function page_load() {
-    searchBox.focus();
-}
 
 function searchMatch(doc, key) {
     key = key.toLowerCase();
