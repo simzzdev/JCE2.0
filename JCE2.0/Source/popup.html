@@ -13,23 +13,32 @@
         }
 
         a.tabLink-active {
-            background-color: #19242f;
+            background-color: #425d79;
             font-weight: bold;
             color: #ffb900;
             font-size: 20px;
             margin-right: 8px;
+            text-decoration: none;
         }
 
         a.tabLink-inactive {
-            background-color: #425d79;
             text-decoration: none;
-            color: white;
+            font-weight: bold;
+            color: #425d79;
             font-size: 20px;
             margin-right: 8px;
         }
 
+        a.tabLink-inactive:hover {
+            border: 1px dashed #425d79;
+        }
+
+        a.jiraSearchBtn:hover{
+            border: 1px dashed blue;
+            background-color: red;
+        }
         /*<!-- KB Tab Styles -->*/
-        span.doc_item {
+        /*span.doc_item {
             font-size: 18px;
             display: block;
             padding: 6px;
@@ -51,6 +60,29 @@
             border: 1px dashed darkturquoise;
             padding: 5px;
             color: black;
+        }*/
+        span.doc_item {
+            font-size: 18px;
+            display: block;
+            padding: 6px;
+        }
+
+        span.doc_item_selected {
+            background-color: #425d79;
+            color: white;
+        }
+
+        span.doc_subitem {
+            font-size: 14px;
+        }
+
+        span.doc_item:hover {
+            background-color: #425d79;
+            text-decoration: underline;
+            cursor: pointer;
+            border: 1px dashed #ffb900;
+            padding: 5px;
+            color: #ffb900;
         }
 
         /*XA Tab Styles*/
@@ -156,7 +188,7 @@
             </div>
             <br>
             <input type="text" placeholder="Enter your PM or Jira ticket number here" id="jiraTxt" style="float: left; width:300px" />
-            <button id="jiraSearchBtn" style="border:none; background: none; margin-left:6px;"><img src="images/search-white.png" width="20px" /></button>
+            <button id="jiraSearchBtn" style="border:none; background: none; margin-left:6px;"><a class="jiraSearchBtn"><img src="images/search-128.png" width="20px" /></a></button>
             <p style="color:red; text-decoration:italic; display:none" id="jiraTxtInputError_p"><b>Invalid Format:</b> Please enter your PM or Jira code in the correct format, as shown:<br> PM-1234 or XMW-1234</p>
         </div>
     </div>

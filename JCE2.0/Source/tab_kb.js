@@ -45,9 +45,7 @@ function updateList() {
         var dateMod = new Date(Date.parse(currentDocs[i].dateModified));
         var today = new Date();
         var diff = today - dateMod;
-        //var diffInDays = 108000 / 86400‬;
         diff = Math.floor(diff / 86400000);
-        //var daysDiff = (new Date(Date.now()) - d).days;
         formattedResults += "<span class=\"" + c + "\" title=\"" + currentDocs[i].id + "\">" + currentDocs[i].title + "<br><span class=\"doc_subitem\"><b>KB " + currentDocs[i].id + "</b> - modified " + diff + " days ago" + "</span>";
         if (currentDocs[i].popularity != null)
             formattedResults += "&nbsp&nbsp<img height=\"12px\" src=\"Popularity\\" + currentDocs[i].popularity + ".png\" />";
